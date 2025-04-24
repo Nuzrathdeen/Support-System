@@ -75,21 +75,22 @@ class TicketController extends Controller
         $ticket->ref = sha1(time());
         $ticket->status = 0;
 
-
         if ($ticket->save()) {
-            // Send the email to customer
-            Mail::to($ticket->email)->send(new \App\Mail\TicketCreated($ticket));
+          // dispatch the TicketCreated event
+          \App\Events\TicketCreated::dispatch($ticket);
 
             return redirect(route('tickets.show', $ticket->id))
                 ->with('success', 'Your ticket is created successfully. Please write down the reference number to check the ticket status later.');
         }
 
+        return redirect()->back()->with('error', 'Oops! Could not create your ticket. Please try later.');
     }
+
 
     /**
      * Display the specified resource.
      */
-    public function show(Ticket $ticket){
+    public function show(Ticket $ticket) {
 
         return view('tickets.show', [
         'ticket' => $ticket,
