@@ -7,10 +7,17 @@ protected $middlewareGroups = [
         \Illuminate\View\Middleware\ShareErrorsFromSession::class,
         \App\Http\Middleware\VerifyCsrfToken::class, // Ensure this is here
         \Illuminate\Routing\Middleware\SubstituteBindings::class,
+
     ],
 
     'api' => [
         'throttle:api',
         \Illuminate\Routing\Middleware\SubstituteBindings::class,
     ],
+];
+
+protected $routeMiddleware = [
+    'auth' => \App\Http\Middleware\Authenticate::class,
+    'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+    'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 ];
