@@ -1,0 +1,570 @@
+Exercise 1: Find out the HTTP status code of the response when validation fails.
+
+    "422 Unprocessable Content
+    {
+    "message": "The email field must be a valid email address.",
+    "errors": {
+        "email": [
+            "The email field must be a valid email address."
+            ]
+        }
+    }
+
+Exercise 2: Develop an API endpoint to get the list of tickets (GET /tickets)
+
+    route\api.php=>
+    "Route::get('/tickets',[App\Http\Controllers\API\V1\TicketController::class,'index']);"
+
+    App\Http\Controllers\API\V1\TicketsController=>
+    "public function index() {
+
+        $tickets = ticket::all();
+
+        return response()->json([
+            'data' => $tickets
+        ]);
+    } "
+
+    Json reply=>
+    "200 OK
+    {
+    "data": [
+        {
+            "id": 2,
+            "customer_name": "Deen",
+            "email": "deen@58njdh",
+            "phone": "14685198641",
+            "description": "Intern",
+            "ref": "7a5988a5f494010629c0972acf074a4166edc426",
+            "status": 0,
+            "created_at": "2025-04-15T07:08:05.000000Z",
+            "updated_at": "2025-04-15T07:08:05.000000Z",
+            "comments": []
+        },
+        {
+            "id": 3,
+            "customer_name": "Rahul",
+            "email": "rahulg@mm",
+            "phone": "653514951582",
+            "description": "Screen repair",
+            "ref": "7c8aed2693d7fa505e1b4e59bc7031b42b741f4a",
+            "status": 0,
+            "created_at": "2025-04-15T10:16:09.000000Z",
+            "updated_at": "2025-04-15T10:16:09.000000Z",
+            "comments": []
+        },
+        {
+            "id": 4,
+            "customer_name": "Rahul",
+            "email": "rahulg@mm",
+            "phone": "653514951582",
+            "description": "Screen repair",
+            "ref": "feac7c026417169991b3bc428304c9b6046549b8",
+            "status": 0,
+            "created_at": "2025-04-15T10:24:21.000000Z",
+            "updated_at": "2025-04-15T10:24:21.000000Z",
+            "comments": []
+        },
+        {
+            "id": 5,
+            "customer_name": "Deen",
+            "email": "Deen@em.lk",
+            "phone": "6596556225",
+            "description": "Intern",
+            "ref": "0c27adf4ab6c42f0add0fd1bfca003094b360bca",
+            "status": 0,
+            "created_at": "2025-04-17T05:17:03.000000Z",
+            "updated_at": "2025-04-17T05:17:03.000000Z",
+            "comments": []
+        },
+        {
+            "id": 6,
+            "customer_name": "Deen",
+            "email": "Deen@em.lk",
+            "phone": "6596556225",
+            "description": "Intern",
+            "ref": "06d4cb2bc283fe0d93198120080e24245327a45c",
+            "status": 0,
+            "created_at": "2025-04-17T05:19:47.000000Z",
+            "updated_at": "2025-04-17T05:19:47.000000Z",
+            "comments": []
+        },
+        {
+            "id": 7,
+            "customer_name": "Deen",
+            "email": "Deen@em.lk",
+            "phone": "6596556225",
+            "description": "Intern",
+            "ref": "22f5a591f23b753e9be082d86e8567f94c9a5801",
+            "status": 0,
+            "created_at": "2025-04-17T05:19:56.000000Z",
+            "updated_at": "2025-04-17T05:19:56.000000Z",
+            "comments": []
+        },
+        {
+            "id": 8,
+            "customer_name": "Deen",
+            "email": "Deen@em.lk",
+            "phone": "6596556225",
+            "description": "Intern",
+            "ref": "bc2094ce61447405b8429f6be5b290522abfbb93",
+            "status": 0,
+            "created_at": "2025-04-17T05:21:14.000000Z",
+            "updated_at": "2025-04-17T05:21:14.000000Z",
+            "comments": []
+        },
+        {
+            "id": 9,
+            "customer_name": "Deen",
+            "email": "Deen@em.lk",
+            "phone": "6596556225",
+            "description": "Intern",
+            "ref": "65886c7dc44a2d16bee95abf0c31aacf0dd3f8e0",
+            "status": 0,
+            "created_at": "2025-04-17T05:21:27.000000Z",
+            "updated_at": "2025-04-17T05:21:27.000000Z",
+            "comments": []
+        },
+        {
+            "id": 10,
+            "customer_name": "Deen",
+            "email": "Deen@em.lk",
+            "phone": "6596556225",
+            "description": "Intern",
+            "ref": "9a05f0c4beb54e4a72a4669df4b14927cc75192c",
+            "status": 0,
+            "created_at": "2025-04-17T05:25:09.000000Z",
+            "updated_at": "2025-04-17T05:25:09.000000Z",
+            "comments": []
+        },
+        {
+            "id": 11,
+            "customer_name": "Deen",
+            "email": "Deen@em.lk",
+            "phone": "6596556225",
+            "description": "Intern",
+            "ref": "91978ace2a96373318251e58efeed686df39be99",
+            "status": 0,
+            "created_at": "2025-04-17T05:26:44.000000Z",
+            "updated_at": "2025-04-17T05:26:44.000000Z",
+            "comments": []
+        },
+        {
+            "id": 12,
+            "customer_name": "Deen",
+            "email": "deen@example.com",
+            "phone": "652375999",
+            "description": "Intern",
+            "ref": "1c0fa60023ea11509b36399af2c87db8efae4ff9",
+            "status": 0,
+            "created_at": "2025-04-17T05:27:34.000000Z",
+            "updated_at": "2025-04-17T05:27:34.000000Z",
+            "comments": []
+        },
+        {
+            "id": 13,
+            "customer_name": "Deen",
+            "email": "deen@mailtrap.io",
+            "phone": "652365999",
+            "description": "Intern",
+            "ref": "fd46ea01e8e0f8a6e15d4e7491f8b875376bd3b6",
+            "status": 0,
+            "created_at": "2025-04-17T05:28:59.000000Z",
+            "updated_at": "2025-04-17T05:28:59.000000Z",
+            "comments": []
+        },
+        {
+            "id": 14,
+            "customer_name": "Deen",
+            "email": "deen@mailtrap.io",
+            "phone": "652365999",
+            "description": "Intern",
+            "ref": "27e0943f55b9b88a13d0541571ca29488a3f87c8",
+            "status": 0,
+            "created_at": "2025-04-17T05:32:13.000000Z",
+            "updated_at": "2025-04-17T05:32:13.000000Z",
+            "comments": []
+        },
+        {
+            "id": 15,
+            "customer_name": "Deen",
+            "email": "deen@mailtrap.io",
+            "phone": "652365999",
+            "description": "Intern",
+            "ref": "08abc52916ab5cdd7932c3f68fec6ae06643d6cc",
+            "status": 0,
+            "created_at": "2025-04-17T05:33:15.000000Z",
+            "updated_at": "2025-04-17T05:33:15.000000Z",
+            "comments": []
+        },
+        {
+            "id": 16,
+            "customer_name": "Deen",
+            "email": "hello@myapp.local",
+            "phone": "6559823556",
+            "description": "Intern",
+            "ref": "975f4348434597308bde32a961e425a622c9ca5a",
+            "status": 0,
+            "created_at": "2025-04-17T05:37:44.000000Z",
+            "updated_at": "2025-04-17T05:37:44.000000Z",
+            "comments": []
+        },
+        {
+            "id": 17,
+            "customer_name": "Deen",
+            "email": "support@yourapp.com",
+            "phone": "65323654985",
+            "description": "Intern",
+            "ref": "fb610ec080c6881b1aa047ed99e4ca7a32d539d6",
+            "status": 0,
+            "created_at": "2025-04-17T05:49:36.000000Z",
+            "updated_at": "2025-04-17T05:49:36.000000Z",
+            "comments": []
+        },
+        {
+            "id": 18,
+            "customer_name": "Deen",
+            "email": "deen@em.lk",
+            "phone": "65323654985",
+            "description": "Intern",
+            "ref": "bc53c3ab869122bb0a9b4e0aea10375b3eb072fd",
+            "status": 0,
+            "created_at": "2025-04-17T05:52:59.000000Z",
+            "updated_at": "2025-04-17T05:52:59.000000Z",
+            "comments": []
+        },
+        {
+            "id": 19,
+            "customer_name": "John",
+            "email": "doe@em.nm",
+            "phone": "21498451320662",
+            "description": "John Doe",
+            "ref": "c3226404522707d69b1f1d14203e31fe8d14bdcf",
+            "status": 0,
+            "created_at": "2025-04-18T05:40:26.000000Z",
+            "updated_at": "2025-04-18T05:40:26.000000Z",
+            "comments": []
+        },
+        {
+            "id": 20,
+            "customer_name": "Rahul",
+            "email": "Rahul@mm.ll",
+            "phone": "25646513584653",
+            "description": "India",
+            "ref": "425aadfda846af998329066921a3375f0646713a",
+            "status": 0,
+            "created_at": "2025-04-18T05:47:11.000000Z",
+            "updated_at": "2025-04-18T05:47:11.000000Z",
+            "comments": []
+        },
+        {
+            "id": 21,
+            "customer_name": "Mack",
+            "email": "mck@mcc.app",
+            "phone": "613281587485",
+            "description": "Mac",
+            "ref": "5798684f9fd913363e47b1868182335b4160215b",
+            "status": 0,
+            "created_at": "2025-04-18T05:48:13.000000Z",
+            "updated_at": "2025-04-18T05:48:13.000000Z",
+            "comments": []
+        },
+        {
+            "id": 22,
+            "customer_name": "Suresh",
+            "email": "sureh@mm.em",
+            "phone": "84615335451",
+            "description": "IOS developer",
+            "ref": "6d97d25285881f319277144bb24f1ab7b70dba72",
+            "status": 0,
+            "created_at": "2025-04-21T06:32:52.000000Z",
+            "updated_at": "2025-04-21T06:32:52.000000Z",
+            "comments": []
+        },
+        {
+            "id": 23,
+            "customer_name": "Ramesh",
+            "email": "ram@em.lk",
+            "phone": "148612458865",
+            "description": "IOS Intern",
+            "ref": "9cfa0402a6fb5ff9ee7842875e07b33a2cdfa98a",
+            "status": 0,
+            "created_at": "2025-04-22T08:45:56.000000Z",
+            "updated_at": "2025-04-22T08:45:56.000000Z",
+            "comments": []
+        },
+        {
+            "id": 24,
+            "customer_name": "pradeep",
+            "email": "pradeep@11.lk",
+            "phone": "784651267",
+            "description": "Flutter",
+            "ref": "ccb42ec0a0cf0b19cf7a0cbaa0f28e83bc749170",
+            "status": 0,
+            "created_at": "2025-04-24T05:48:05.000000Z",
+            "updated_at": "2025-04-24T05:48:05.000000Z",
+            "comments": []
+        },
+        {
+            "id": 25,
+            "customer_name": "pradeep",
+            "email": "pradeep@11.lk",
+            "phone": "784651267",
+            "description": "Flutter",
+            "ref": "75fb0e4c31908d7829dce558ec6d3e9733ad3e86",
+            "status": 0,
+            "created_at": "2025-04-24T05:54:23.000000Z",
+            "updated_at": "2025-04-24T05:54:23.000000Z",
+            "comments": []
+        },
+        {
+            "id": 26,
+            "customer_name": "pradeep",
+            "email": "pradeep@11.lk",
+            "phone": "784651267",
+            "description": "Flutter",
+            "ref": "ce5d6ab9b19be0b2814363f2dd117579e87674cd",
+            "status": 0,
+            "created_at": "2025-04-24T05:55:09.000000Z",
+            "updated_at": "2025-04-24T05:55:09.000000Z",
+            "comments": []
+        },
+        {
+            "id": 27,
+            "customer_name": "pradeep",
+            "email": "pradeep@11.lk",
+            "phone": "784651267",
+            "description": "Flutter",
+            "ref": "42cd9b741f003e41eb8d0eaaa55c4e752a74f32b",
+            "status": 0,
+            "created_at": "2025-04-24T05:55:37.000000Z",
+            "updated_at": "2025-04-24T05:55:37.000000Z",
+            "comments": []
+        },
+        {
+            "id": 28,
+            "customer_name": "pradeep",
+            "email": "pradeep@11.lk",
+            "phone": "784651267",
+            "description": "Flutter",
+            "ref": "e4940fc1550d1a7add4893298fd6b26e924e9f26",
+            "status": 0,
+            "created_at": "2025-04-24T05:57:14.000000Z",
+            "updated_at": "2025-04-24T05:57:14.000000Z",
+            "comments": []
+        },
+        {
+            "id": 29,
+            "customer_name": "pradeep",
+            "email": "pradeep@11.lk",
+            "phone": "784651267",
+            "description": "Flutter",
+            "ref": "b4b23c1169515c19dae993d8761d6465d380364b",
+            "status": 0,
+            "created_at": "2025-04-24T05:57:58.000000Z",
+            "updated_at": "2025-04-24T05:57:58.000000Z",
+            "comments": []
+        },
+        {
+            "id": 30,
+            "customer_name": "pradeep",
+            "email": "pradeep@11.lk",
+            "phone": "784651267",
+            "description": "Flutter",
+            "ref": "4c0ce2533a7ad8d2b122a3d60104e57125358f07",
+            "status": 0,
+            "created_at": "2025-04-24T05:58:27.000000Z",
+            "updated_at": "2025-04-24T05:58:27.000000Z",
+            "comments": []
+        },
+        {
+            "id": 31,
+            "customer_name": "pradeep",
+            "email": "pradeep@11.lk",
+            "phone": "784651267",
+            "description": "Flutter",
+            "ref": "788f00199b01df081b0c7385fa9234bfe134ce2e",
+            "status": 0,
+            "created_at": "2025-04-24T06:01:14.000000Z",
+            "updated_at": "2025-04-24T06:01:14.000000Z",
+            "comments": []
+        },
+        {
+            "id": 32,
+            "customer_name": "Revi",
+            "email": "revi@11.lk",
+            "phone": "9784654986",
+            "description": "Flutter",
+            "ref": "58ba22f25cfec55d1a6d3830540e40df16993f5f",
+            "status": 0,
+            "created_at": "2025-04-24T06:04:54.000000Z",
+            "updated_at": "2025-04-24T06:04:54.000000Z",
+            "comments": []
+        },
+        {
+            "id": 33,
+            "customer_name": "Revi",
+            "email": "revi@11.lk",
+            "phone": "9784654986",
+            "description": "Flutter",
+            "ref": "39cb70aeb17fe967e11a6132d0027bb4604c2003",
+            "status": 0,
+            "created_at": "2025-04-24T06:33:35.000000Z",
+            "updated_at": "2025-04-24T06:33:35.000000Z",
+            "comments": []
+        },
+        {
+            "id": 34,
+            "customer_name": "John Doe",
+            "email": "john@em.lk",
+            "phone": null,
+            "description": "This is a test ticket",
+            "ref": "f5c63c1c982d277d4346fce60e94f1c4ecf0cddf",
+            "status": 0,
+            "created_at": "2025-04-30T03:34:28.000000Z",
+            "updated_at": "2025-04-30T03:34:28.000000Z",
+            "comments": []
+        },
+        {
+            "id": 35,
+            "customer_name": "John Doe",
+            "email": "john@em.lk",
+            "phone": null,
+            "description": "This is a test ticket",
+            "ref": "10d024111a47cb3ffd41ded631306736dfc53e4f",
+            "status": 0,
+            "created_at": "2025-04-30T03:55:57.000000Z",
+            "updated_at": "2025-04-30T03:55:57.000000Z",
+            "comments": []
+        },
+        {
+            "id": 36,
+            "customer_name": "John Doe",
+            "email": "john@em.lk",
+            "phone": null,
+            "description": "This is a test ticket",
+            "ref": "a86dfec0f19043e35d6f9f820c21003e89907653",
+            "status": 0,
+            "created_at": "2025-04-30T04:05:12.000000Z",
+            "updated_at": "2025-04-30T04:05:12.000000Z",
+            "comments": []
+        },
+        {
+            "id": 37,
+            "customer_name": "John Doe",
+            "email": "john@em.lk",
+            "phone": null,
+            "description": "This is a test ticket",
+            "ref": "dfcbb8a52ddae57c23113e39f1bddd669ff51ec6",
+            "status": 0,
+            "created_at": "2025-04-30T04:07:17.000000Z",
+            "updated_at": "2025-04-30T04:07:17.000000Z",
+            "comments": []
+        }
+    ]
+}"
+
+
+Exercise 3: Add search by reference feature to GET /tickets API.
+
+    App\Http\Controllers\API\V1\TicketsController =>
+
+    "public function index(Request $request) {
+
+    if ($request->has('ref')) {
+        $ticket = Ticket::where('ref', $request->ref)->first();
+
+        if ($ticket) {
+            return response()->json(['data' => $ticket]);
+        } else {
+            return response()->json(['message' => 'Ticket not found'], 404);
+        }
+    }
+
+    $tickets = Ticket::all();
+
+    return response()->json([
+        'data' => $tickets
+    ]);
+} "
+
+    In the Http url in Get method =>
+    "http://localhost:8000/api/v1/tickets?ref=YOUR_REFERENCE_HERE"
+
+    Json response =>
+    " 200 OK
+    {
+    "data": {
+        "id": 33,
+        "customer_name": "Revi",
+        "email": "revi@11.lk",
+        "phone": "9784654986",
+        "description": "Flutter",
+        "ref": "39cb70aeb17fe967e11a6132d0027bb4604c2003",
+        "status": 0,
+        "created_at": "2025-04-24T06:33:35.000000Z",
+        "updated_at": "2025-04-24T06:33:35.000000Z",
+        "comments": []
+    }
+} "
+
+
+Exercise 4: Write test cases for the GET /tickets API you developed in Exercise 2 and Exercise 3.
+
+    in Exersice 2 of 4;
+        created another file under tests/features/API/V1/TicketsGetTest =>
+        " public function test_get_all_tickets() {
+
+            $response = $this->getJson('/api/v1/tickets');
+
+            $response->assertStatus(200)
+                    ->assertJsonStructure([
+                        'data' => []
+                    ]);
+        } "
+
+    in Exercise 3 of 4;
+        Under the same file tests/features/API/V1/TicketsGetTest =>
+            " public function test_get_ticket_by_reference() {
+
+                $ticket = \App\Models\Ticket::factory()->create(); // Create a fake ticket using factory
+
+                $response = $this->getJson('/api/v1/tickets?ref=' . $ticket->ref);
+
+                $response->assertStatus(200)
+                        ->assertJsonFragment(['ref' => $ticket->ref]);
+            }"
+
+        Create a new File under database/factories/TicketFactory =>
+            "<?php
+
+            namespace Database\Factories;
+
+            use App\Models\Ticket;
+            use Illuminate\Database\Eloquent\Factories\Factory;
+            use Illuminate\Support\Str;
+
+            class TicketFactory extends Factory
+            {
+                protected $model = Ticket::class;
+
+                public function definition(): array
+                {
+                        return [
+                            'customer_name' => $this->faker->name,
+                            'email' => $this->faker->unique()->safeEmail,
+                            'phone' => $this->faker->phoneNumber,
+                            'description' => $this->faker->paragraph,
+                            'ref' => strtoupper(Str::random(10)),
+                            'status' => $this->faker->randomElement(['open', 'pending', 'closed']),
+                        ];
+                    }
+                } "
+
+
+
+Exercise 5: Develop APIs for the functions at support agent portal and write test cases for them.
+
+
+
+
